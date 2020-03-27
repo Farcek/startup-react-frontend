@@ -1,6 +1,7 @@
 import express from 'express';
 import React from 'react'
 import path from 'path'
+
 import ReactDOMServer from 'react-dom/server'
 import { ExceptionConvert } from '@napp/exception';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
@@ -18,6 +19,8 @@ export class LayoutServer extends React.Component<{ content?: string, extractor?
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
                     <title>Userly</title>
+                    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+                    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
                     <base href="/" />
                     {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" /> */}
                     {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" /> */}

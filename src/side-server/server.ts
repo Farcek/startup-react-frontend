@@ -7,13 +7,16 @@ import loggerDefault from './logger';
 import { ExceptionConvert } from '@napp/exception';
 
 const morgan = require('morgan');
-
+const favicon = require('serve-favicon');
 const app = express();
+
+
 if (confLogger.LOG_ACCESS) {
     app.use(morgan(confLogger.LOG_ACCESS_FORMAT));
 }
 
-app.use('/asset',express.static(path.resolve('dist.client')));
+app.use(favicon(path.resolve('favicon.ico')));
+app.use('/asset', express.static(path.resolve('dist.client')));
 
 // app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(bodyParser.json());
@@ -34,6 +37,7 @@ app.listen(confService.SERVER_PORT, confService.SERVER_HOST, () => {
         : confEnvironment.isDevelopment
             ? 'Development env'
             : confSystem.NODE_ENV;
+            
     loggerDefault.info(`Server (${serverType}) running port="${confService.SERVER_PORT}", host="${confService.SERVER_HOST}"`, {
         port: confService.SERVER_PORT,
         host: confService.SERVER_HOST,
