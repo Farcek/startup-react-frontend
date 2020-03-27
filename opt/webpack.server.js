@@ -10,7 +10,7 @@ module.exports = (env, argv) => {
     return {
         devtool: common.devtool(isProd),
         entry: {
-            server: "./src/side-server/server.tsx"
+            server: "./src/side-server/server.ts"
         },
         target: 'node',
         externals: nodeExternals(),
