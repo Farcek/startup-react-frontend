@@ -5,17 +5,14 @@ import { routes } from './routes'
 import PageNotfound from './pages/notfound'
 import HeaderComponent from './component/header'
 
-import css from './style/main.css';
-console.log('css',css)
+import './style/main.g.css';
+
 export default class AppMain extends React.Component {
     render() {
         return <div>
             <HeaderComponent />
-
             <div>
-                <Link to="/">Home</Link>
-                <Link to="/contact">contact</Link>
-                <Link to="/404">404</Link>
+                
                 <Switch>
                     {routes.map((route, i) => {
                         return <Route key={i} exact={route.exact} path={route.path} component={route.component} />

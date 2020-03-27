@@ -1,0 +1,11 @@
+.header {
+  background-color: red;
+  background-image: url('./logo.png') ;
+  color: black;
+  padding: 1rem;
+}
+
+.link{
+  margin-right: 1rem;
+  margin-left: 1rem;
+}

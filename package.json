@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clear": "rimraf dist.client/**/* dist.server/**/*",
     "build.client": "webpack --mode=development ---config=opt/webpack.client.js",
     "build.server": "webpack --mode=development --config=opt/webpack.server.js",
     "build": "webpack --mode=development --config=opt/webpack.config.js",
+    "prebuild:prod": "npm run clear",
     "build:prod": "webpack --mode=production --config=opt/webpack.config.js",
-    "start": "webpack-dev-server",
-    "prestart.node": "npm run build",
-    "start.node": "node dist.server/server.bundle.js",
+    "prestart.test": "npm run build:prod",
+    "start.test": "node dist.server/server.bundle.js",
     "dev": "http-server -c=0 dist.client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,6 +29,7 @@
     "@types/react-router": "^5.1.4",
     "@types/react-router-dom": "^5.1.3",
     "css-loader": "^3.4.2",
+    "file-loader": "^6.0.0",
     "loadable-ts-transformer": "^1.0.0-alpha.3",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
@@ -35,6 +37,7 @@
     "react-dom": "^16.13.1",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
+    "rimraf": "^3.0.2",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.1.3",
     "ts-loader": "^6.2.2",
@@ -44,6 +47,7 @@
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
+    "webpack-manifest-plugin": "^2.2.0",
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
@@ -51,6 +55,7 @@
     "envalid": "^6.0.1",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
+    "postcss-loader": "^3.0.0",
     "winston": "^3.2.1"
   }
 }

@@ -13,7 +13,7 @@ if (confLogger.LOG_ACCESS) {
     app.use(morgan(confLogger.LOG_ACCESS_FORMAT));
 }
 
-app.use(express.static(path.resolve('dist.client')));
+app.use('/asset',express.static(path.resolve('dist.client')));
 
 // app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(bodyParser.json());

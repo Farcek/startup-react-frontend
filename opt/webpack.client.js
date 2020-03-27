@@ -18,23 +18,25 @@ module.exports = (env, argv) => {
         output: {
             path: path.resolve("dist.client"),
             filename: common.bundleName(isProd),
-            chunkFilename: common.chunkName(isProd)
+            chunkFilename: common.chunkName(isProd),
+            publicPath: '/asset/'
         },
         resolve: common.resolve(isProd),
         module: {
             rules: [
                 common.tsLoader(isProd),
-                // common.cssLoader(isProd),
+                common.cssLoader(isProd),
                 common.cssModuleLoader(isProd),
-                // ... common.styleLoader(isProd),
+                common.imgLoader(isProd),
             ]
         },
 
         plugins: [
             // new HtmlWebpackPlugin({ template: 'src/index.html' }),
             new LoadablePlugin(),
-            new webpack.DefinePlugin({ __isBrowser__: "true" }),
-            common.miniCssExtractPlugin(isProd)
+            // new webpack.DefinePlugin({ __isBrowser__: "true" }),
+            common.miniCssExtractPlugin(isProd),
+            common.pluginManifestPlugin(isProd),
         ],
     }
 };
