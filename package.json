@@ -4,15 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clear": "rimraf dist.client/**/* dist.server/**/*",
-    "build.client": "webpack --mode=development ---config=opt/webpack.client.js",
-    "build.server": "webpack --mode=development --config=opt/webpack.server.js",
-    "build": "webpack --mode=development --config=opt/webpack.config.js",
+    "clear": "rimraf dist/**/*",
+    "build": "webpack --mode=development --config=opt/webpack.client.js",
     "prebuild:prod": "npm run clear",
-    "build:prod": "webpack --mode=production --config=opt/webpack.config.js",
-    "prestart.test": "npm run build:prod",
-    "start.test": "node dist.server/server.bundle.js",
-    "dev": "http-server -c=0 dist.client",
+    "build:prod": "webpack --mode=production --config=opt/webpack.client.js",
+    "dev": "webpack-dev-server --mode=development --config=opt/webpack.client.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -30,6 +26,7 @@
     "@types/react-router-dom": "^5.1.3",
     "css-loader": "^3.4.2",
     "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.0.2",
     "loadable-ts-transformer": "^1.0.0-alpha.3",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
@@ -48,12 +45,5 @@
     "webpack-manifest-plugin": "^2.2.0",
     "webpack-node-externals": "^1.7.2"
   },
-  "dependencies": {
-    "@napp/exception": "^2.0.1",
-    "envalid": "^6.0.1",
-    "express": "^4.17.1",
-    "morgan": "^1.10.0",
-    "serve-favicon": "^2.5.0",
-    "winston": "^3.2.1"
-  }
+  "dependencies": {}
 }

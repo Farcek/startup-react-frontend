@@ -1,6 +1,6 @@
 const path = require("path");
-const webpack = require("webpack");
-const LoadablePlugin = require('@loadable/webpack-plugin');
+
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 
 const common = require('./webpack.common');
@@ -8,18 +8,18 @@ const common = require('./webpack.common');
 module.exports = (env, argv) => {
 
     let isProd = common.isProd(env, argv);
-   
+
     return {
         target: "web",
         devtool: common.devtool(isProd),
         entry: {
-            client: path.resolve('src/side-client/startup.tsx'),
+            client: path.resolve('src/main.tsx'),
         },
         output: {
-            path: path.resolve("dist.client"),
+            path: path.resolve("dist"),
             filename: common.bundleName(isProd),
             chunkFilename: common.chunkName(isProd),
-            publicPath: '/asset/'
+            publicPath: '/app/'
         },
         resolve: common.resolve(isProd),
         module: {
@@ -32,11 +32,20 @@ module.exports = (env, argv) => {
         },
 
         plugins: [
-            // new HtmlWebpackPlugin({ template: 'src/index.html' }),
-            new LoadablePlugin(),
-            // new webpack.DefinePlugin({ __isBrowser__: "true" }),
+            new HtmlWebpackPlugin({
+                template: 'src/index.html'
+            }),
             common.miniCssExtractPlugin(isProd),
             common.pluginManifestPlugin(isProd),
         ],
+        devServer: {
+            contentBase: path.resolve('dist'),
+            // compress: true,
+            port: 9000,
+            proxy: {
+                '/api': 'http://localhost:3000'
+            },
+            publicPath: '/app/'
+        }
     }
 };

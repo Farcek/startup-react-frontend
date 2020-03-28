@@ -19,8 +19,8 @@ export default class PageService extends React.Component {
 
             <div>
                 <div>
-                    <Link to="/service/a" className={``}>AA</Link>
-                    <Link to="/service/b" className={``}>BB</Link>
+                    <Link to="service/a" className={``}>AA</Link>
+                    <Link to="service/b" className={``}>BB</Link>
                 </div>
                 <div>
                     <Route exact path={`/service/a`} component={ServiceA} />

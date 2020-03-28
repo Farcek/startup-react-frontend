@@ -7,7 +7,7 @@ export default class PageHome extends React.Component {
         return <div>
             <h1>home component</h1>
 
-            <button onClick={()=>this.test()}>test</button>
+            <button onClick={()=>this.test()}>test 2</button>
         </div>;
     }
 }
