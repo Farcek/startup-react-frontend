@@ -1,0 +1,22 @@
+.header {
+  background-color: red;
+  height: 75px;
+  color: black;
+
+  .line1 {
+    height: 30px;
+
+    background-color: #9c3030;
+    padding: 10px;
+  }
+
+  .line2 {
+    height: 25px;
+    background-color: #cf4545;
+  }
+}
+
+.link{
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
